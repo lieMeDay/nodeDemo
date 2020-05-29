@@ -30,14 +30,18 @@ app.use('/admin', require('./routers/admin'))  //处理后台管理路由
 app.use('/api', require('./routers/api')) //处理api的 即接口
 app.use('/', require('./routers/main')) //处理前端展示的
 
-// 连接数据库  监听http请求
-mongoose.connect('mongodb://localhost:27017/nodeDemo', function (err) {
-    if (err) {
-        console.log('数据库连接失败')
-    } else {
-        console.log('数据库连接成功')
-        // app.listen(9898, '127.0.1.1')
-        app.listen(9898)
-    }
+// 连接数据库  监听http请求 mongodb://localhost:27017/nodeDemo
+var db = mongoose.connect('mongodb://localhost/nodeDemo');
+db.connection.on("error", function (error) {  
+    console.log("数据库连接失败：" + error);
+});
+
+db.connection.on("open", function () {  
+    console.log("数据库连接成功"); 
+     // app.listen(9898, '127.0.1.1')
+     app.listen(9898)
 })
 
+db.connection.on('disconnected', function () {    
+    console.log('数据库连接断开');  
+})
