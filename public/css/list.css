@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.page{
+    width: 100%;
+    height: 100%;
+    background-color: #82bbed;
+    position: absolute;
+    overflow: auto;
+
+}
+.pageWrap{
+    width: 88%;
+    min-width: 1000px;
+    height: 1000px;
+    float: left;
+    margin: 0px auto;
+    padding: 20px;
+}
+.pageCon{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.slid{
+    width: calc(20% - 20px);
+    height: 1000px;
+    float: left;
+}
+.center{
+    width: 60%;
+    margin: 0 20px;
+    height: 1000px;
+    float: left;
+}
+/* 右侧登录 */
+.slidWrap{
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.slidBox{
+    width: 96%;
+    margin: 0 auto;
+}
+.slidHead{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+    position: relative;
+}
+.slidHead >span{
+    float: left;
+    padding: 0 5px;
+    border-bottom: 2px solid #eddd31;
+    position: absolute;
+}
+.userMsg{
+    padding: 5px 0;
+}
+.userMsg>span{
+    color: red;
+}
+.goAdmin{
+    color: blue;
+    cursor: pointer;
+    padding-bottom: 5px;
+}
+.goAdmin:hover{
+    color: pink;
+}
+.out{
+    color: #eddd31;
+    font-size: 14px;
+    cursor: pointer;
+}
+.out:hover{
+    color: red;
+}
+.iptBox{
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.iptBox input{
+    width: calc(100% - 18px);
+    float: left;
+    padding: 0 9px;
+    border: none;
+    outline: none;
+    height: 35px;
+}
+.iptBox input.change::-webkit-input-placeholder {
+    color: red;
+}
+.singUpbtn,
+.singInbtn{
+    width: 100%;
+    line-height: 35px;
+    border-radius: 8px;
+    background-color: #eddd31;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+.dltips{
+    text-align: right;
+    font-size: 12px;
+    margin-top: 5px;
+}
+.dltips>span{
+    color: #eddd31;
+    cursor: pointer;
+}
+
+/* center 内容列表 */
+.item{
+    border-bottom: 1px solid #f0f2f7;
+    padding: 20px;
+    cursor: pointer;
+}
+.itemTips{
+    line-height: 24px;
+    color: #15171a;
+    font-size: 16px;
+    margin: 10px 0;
+    overflow : hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+}
+.itemDate{
+    font-size: 14px;
+}
+/* 左侧列表 */
+.listWrap{
+    width:calc(100% - 20px);
+    padding:10px;
+    background-color: #fff;
+    overflow: hidden;
+}
+.listItem{
+    float: left;
+    padding: 0 5px;
+    margin-right: 10px;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.listItem.act,
+.listItem:hover{
+    background-color: #eddd31;
+}

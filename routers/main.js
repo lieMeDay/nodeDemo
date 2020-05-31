@@ -1,9 +1,35 @@
+// 页面路径 页面显示
 var express = require('express')
 var router = express.Router()
 
-// 注: 此处'/user' 前还有'/api'
+var Category=require('../models/category')
+var Content=require('../models/content')
+
 router.get('/', function (req, res, next) {
-    res.send('mainUser')
+    Category.find().then(function(categories){
+        res.render('main/index',{
+            userInfo:req.userInfo,
+            categories:categories
+        })
+    })
+})
+
+router.get('/list', function (req, res, next) {
+    var categoryId=req.query.id
+    // 获取所有分类
+    Category.find().then(function(categories){
+        // 获取所选分类内容
+        Content.find({
+            category:categoryId 
+        }).populate(['category','user']).then(function(contents){
+            res.render('main/list',{
+                userInfo:req.userInfo,
+                categories:categories,
+                contents:contents,
+            })
+        })
+    })
+
 })
 
 module.exports = router

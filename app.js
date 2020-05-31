@@ -6,8 +6,14 @@ var express = require('express')
 var swig = require('swig')
 // 加载数据库模块
 var mongoose = require('mongoose')
+// 加载body-parser 用来处理post数据
+var bodyParser = require('body-parser')
+// cookie 设置
+var Cookies = require('cookies')
 // 创建app应用 ==> app相当于 node.js  Http.createServer()
 var app = express()
+
+var User = require('./models/user')
 
 // 设置静态文件托管
 // 当用户访问的url以/public开始，那么直接返回对应的__dirname+'/public'下的文件
@@ -24,24 +30,42 @@ app.set('view engine', 'html')
 // 在开发过程中需要取消模板缓存 ，避免每次重启
 swig.setDefaults({ cache: false })
 
+// bodyParser 设置
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// 设置cookie
+app.use(function (req, res, next) {
+    req.cookies = new Cookies(req, res)
+    // 解析登录用户信息
+    req.userInfo = {}
+    if (req.cookies.get('userInfo')) {
+        try {
+            req.userInfo = JSON.parse(req.cookies.get('userInfo'))
+            // 获取当前用户信息，是否是管理员
+            User.findById(req.userInfo.id).then(function (userInfo) {
+                req.userInfo.isAdmin = Boolean(userInfo.isAdmin)
+                next()
+            })
+        } catch (e) {
+            next()
+        }
+    } else {
+        next()
+    }
+})
+
 // 根据不同功能划分模块
 // 1=>路由 访问的路由以/admin开头的，处理当前文件夹下的admin.js 下同
 app.use('/admin', require('./routers/admin'))  //处理后台管理路由
 app.use('/api', require('./routers/api')) //处理api的 即接口
 app.use('/', require('./routers/main')) //处理前端展示的
 
-// 连接数据库  监听http请求 mongodb://localhost:27017/nodeDemo
-var db = mongoose.connect('mongodb://localhost/nodeDemo');
-db.connection.on("error", function (error) {  
-    console.log("数据库连接失败：" + error);
+// 连接数据库  监听http请求 
+mongoose.connect('mongodb://localhost/nodeDemo', function (err) {
+    if (err) {
+        console.log('数据库连接失败')
+    } else {
+        console.log('数据库连接成功')
+        app.listen(9898)
+    }
 });
-
-db.connection.on("open", function () {  
-    console.log("数据库连接成功"); 
-     // app.listen(9898, '127.0.1.1')
-     app.listen(9898)
-})
-
-db.connection.on('disconnected', function () {    
-    console.log('数据库连接断开');  
-})

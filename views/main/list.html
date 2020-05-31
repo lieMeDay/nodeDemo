@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表</title>
+    <link rel="stylesheet" href="/public/css/list.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="pageWrap">
+            <div class="pageCon">
+                <div class="slid">
+                    <div class="listWrap">
+						{% for v in categories %}
+                        <span class="listItem" onclick="window.location.href='/list?id={{v.id}}'">{{v.name}}</span>
+						{%endfor%}
+                    </div>
+                </div>
+                <div class="center">
+                    {% for v in contents%}
+                    <article class="item">
+                        <h2 class="itemTit">{{v.title}}</h2>
+                        <p class="itemTips">{{v.desc}}</p>
+                        <p class="itemDate"><span>{{v.addTime|date('Y-m-d')}}</span><span>·</span><span>{{v.category.name}}</span><span>·</span><span>{{v.user.userName}}</span></p>
+                    </article>
+                    {% endfor %}
+                </div>
+                <div class="slid">
+                    <!-- 用户信息 -->
+                    {% if userInfo.id%}
+                    <div class="slidWrap showUser">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>用户信息</span>
+                            </div>
+                            {% if userInfo.isAdmin %}
+                            <p class="userMsg"><span>{{userInfo.userName}}</span>,您好，欢迎管理员光临!!!</p>
+                            <p class="goAdmin" onclick="window.location.href='/admin'">进入管理</p>
+                            {% else %}
+                            <p class="userMsg"><span>{{userInfo.userName}}</span>,您好，欢迎光临!!!</p>
+                            {%endif%}
+                            <p class="out">退出登录</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- 登录 -->
+                    <div class="slidWrap signUp">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>登录</span>
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="upUser" placeholder="请输入账号">
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="upPass" placeholder="请输入密码">
+                            </div>
+                            <div class="singUpbtn">登录</div>
+                            <p class="dltips">还没注册?<span class="goIn">马上注册</span></p>
+                        </div>
+                    </div>
+                    <!-- 注册 -->
+                    <div class="slidWrap signIn">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>注册</span>
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="inUser" placeholder="请输入账号">
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="inPass" placeholder="请输入密码">
+                            </div>
+                            <div class="singInbtn">注册</div>
+                            <p class="dltips">已有账号?<span class="goUp">马上登录</span></p>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/list.js"></script>
+</body>
+
+</html>

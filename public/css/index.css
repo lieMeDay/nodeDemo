@@ -1,0 +1,248 @@
+html,
+body,
+.container,
+.content-wrap {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	background: #373a47;
+}
+
+
+.content-wrap {
+	overflow: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.content {
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: #000;
+}
+
+.content::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0s 0.3s;
+	transition: opacity 0.3s;
+}
+.content::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+canvas{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+/* Menu Button */
+.menu-button {
+	position: fixed;
+	z-index: 1000;
+	margin: 1em;
+	padding: 0;
+	width: 2.5em;
+	height: 2.25em;
+	border: none;
+	text-indent: 2.5em;
+	font-size: 1.5em;
+	color: transparent;
+	background: transparent;
+}
+
+.menu-button::before {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	bottom: 0.5em;
+	left: 0.5em;
+	background: linear-gradient(#fff 20%, transparent 20%, transparent 40%, #fff 40%, #fff 60%, transparent 60%, transparent 80%, #fff 80%);
+	content: '';
+}
+
+.menu-button:hover {
+	opacity: 0.6;
+}
+
+/* Close Button */
+.close-button {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	overflow: hidden;
+	text-indent: 16px;
+	border: none;
+	z-index: 1001;
+	background: transparent;
+	color: transparent;
+}
+
+.close-button::before,
+.close-button::after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 100%;
+	top: 0;
+	left: 50%;
+	background: #95a5a6;
+}
+
+.close-button::before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.close-button::after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/* Menu */
+.menu-wrap {
+	background-color: #000;
+	position: absolute;
+	z-index: 1001;
+	width: 300px;
+	height: 100%;
+	font-size: 1.15em;
+	opacity: 0;
+	transform: rotate(-90deg);
+	transform-origin: left bottom;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.menu {
+	height: 100%;
+	/* padding: 2em 1em; */
+}
+
+.s_head{
+	width: 100%;
+	height: 40%;
+	background: url('/public/image/mybg.gif') no-repeat center center;
+	background-size: 100% 100%;
+	position: relative;
+}
+.myMsg{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-60%);
+	color: #fff;
+	text-align: center;
+}
+.myMsg >img{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.myMsg p{
+	margin: 0;
+	line-height: 40px;
+}
+.s_con{
+	/* height: calc(60% - 1px);
+	border-top: 1px solid #fff; */
+	height: 60%;
+}
+.list{
+	width: 80%;
+	margin: 0 auto;
+}
+.l{
+	width: 100%;
+	overflow: hidden;
+	line-height: 40px;
+	cursor: pointer;
+}
+.l>*{
+	float: left;
+	text-align: center;
+	color: #989898;
+	font-size: 14px;
+}
+.l:hover *{
+	color: #77b6ff;
+	border-bottom-color: #77b6ff;
+}
+.l>span:nth-child(1){
+	width: 50px;
+}
+
+.l .page{
+	width: 30px;
+}
+.l>div{
+	width: calc(100% - 90px);
+	margin:0 5px;
+	height: 20px;
+	border-bottom: 1px dotted #ffffffcc;
+}
+
+/* Shown menu */
+.show-menu .menu-wrap {
+	/* -webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0); */
+	opacity: 1;
+	transform: rotate(0deg);
+}
+
+.show-menu .content-wrap {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+	-webkit-transform: translate3d(100px, 0, 0);
+	transform: translate3d(100px, 0, 0);
+}
+
+.show-menu .content::after {
+	z-index: 200;
+	opacity: 1;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.p{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	color: #fff;
+	font-size: 24px;
+	z-index: 100;
+}
+.pb{
+	text-align: center;
+}
+.pb span{
+	/* float: left; */
+	cursor: pointer;
+	padding: 0 10px;
+	/* border: 2px solid #fff; */
+	border-radius: 5px;
+}
+.pb span:hover{
+	color: #ffffffcc;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>小鱼之家</title>
+	<link rel="stylesheet" type="text/css" href="/public/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/index.css" />
+</head>
+<style>
+
+</style>
+
+<body onresize="drawImage()">
+	<div class="container">
+		<div class="menu-wrap">
+			<nav class="menu">
+				<div class="s_head">
+					<div class="myMsg">
+						<img src="/public/image/myhead.jpg" alt="">
+						<p>蝶梦</p>
+					</div>
+				</div>
+				<div class="s_con">
+					<div class="list">
+						{% for k,v in categories %}
+						<div class="l" onclick="window.location.href='/list?id={{v.id}}'">
+							<span>{{v.name}}</span>
+							<div></div>
+							<span class="page">{{k+1}}</span>
+						</div>
+						{%endfor%}
+					</div>
+				</div>
+			</nav>
+			<button class="close-button" id="close-button">Close Menu</button>
+		</div>
+		<button class="menu-button" id="open-button">Open Menu</button>
+		<div class="content-wrap">
+			<div class="content">
+				<canvas id="canvas"></canvas>
+				<div class="p">
+					<p>如果我走过你走过的路，看过你看过的风景</p>
+					<p>是不是可以更靠近你一点</p>
+					<p class="pb"><span onclick="window.location.href='/list'"> 开启旅途 &gt;&gt;&gt; </span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/public/js/index.js"></script>
+<script src="/public/js/canvas.js"></script>
+
+</html>
