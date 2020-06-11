@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表</title>
+    <link rel="stylesheet" href="/public/css/listWrap.css">
+    <link rel="stylesheet" href="/public/css/watch.css">
+    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <ul class="List">
+                {% for v in categories %}
+                {% if v._id==categoryId %}
+                <li onclick="window.location.href='/list?id={{v.id}}'" class="act"><span>{{v.name}}</span></li>
+                {% else %}
+                <li onclick="window.location.href='/list?id={{v.id}}'"><span>{{v.name}}</span></li>
+                {% endif %}
+                {%endfor%}
+            </ul>
+        </header>
+        <div class="pageWrap">
+            <div class="pageCon">
+                <div class="slid">
+                    <link rel="stylesheet" href="/public/css/qiandao_style.css">
+                    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+                    <div class="qiandao-left">
+                        <div class="qiandao-left-top clear">
+                            <div class="current-date">2016年1月6日</div>
+                        </div>
+                        <div class="qiandao-main" id="js-qiandao-main">
+                            <ul class="qiandao-list" id="js-qiandao-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <script src="/public/js/qiandao_js.js"></script>
+                </div>
+                <div class="center">
+                    {%block main%}{%endblock%}
+                </div>
+                <div class="slid">
+                    <div id="watch">
+                        <div id="clock">
+                            <p class="date"></p>
+                            <p class="time"></p>
+                        </div>
+                    </div>
+                    <!-- 用户信息 -->
+                    {% if userInfo.id%}
+                    <div class="slidWrap showUser">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>用户信息</span>
+                            </div>
+                            {% if userInfo.isAdmin %}
+                            <p class="userMsg"><span>{{userInfo.userName}}</span>,您好，欢迎管理员光临!!!</p>
+                            <p class="goAdmin" onclick="window.location.href='/admin'">进入管理</p>
+                            {% else %}
+                            <p class="userMsg"><span>{{userInfo.userName}}</span>,您好，欢迎光临!!!</p>
+                            {%endif%}
+                            <p class="out">退出登录</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <!-- 登录 -->
+                    <div class="slidWrap signUp">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>登录</span>
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="upUser" placeholder="请输入账号">
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="upPass" placeholder="请输入密码">
+                            </div>
+                            <div class="singUpbtn">登录</div>
+                            <p class="dltips">还没注册?<span class="goIn">马上注册</span></p>
+                        </div>
+                    </div>
+                    <!-- 注册 -->
+                    <div class="slidWrap signIn">
+                        <div class="slidBox">
+                            <div class="slidHead">
+                                <span>注册</span>
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="inUser" placeholder="请输入账号">
+                            </div>
+                            <div class="iptBox">
+                                <input type="text" name="" id="inPass" placeholder="请输入密码">
+                            </div>
+                            <div class="singInbtn">注册</div>
+                            <p class="dltips">已有账号?<span class="goUp">马上登录</span></p>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/public/js/watch.js"></script>
+<script src="/public/js/sgin&log.js"></script>
+</html>

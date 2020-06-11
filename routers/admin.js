@@ -258,18 +258,19 @@ router.get('/content/add', function (req, res, next) {
 router.post('/content/add', function (req, res, next) {
     if (req.body.category == '') {
         res.render("admin/error", {
-            userInfo: userInfo,
+            userInfo: req.userInfo,
             msg: '内容分类不能为空'
         })
         return
     }
     if (req.body.title == '') {
         res.render("admin/error", {
-            userInfo: userInfo,
+            userInfo: req.userInfo,
             msg: '内容标题不能为空'
         })
         return
     }
+    console.log(req.body)
     // 保存数据
     new Content({
         category: req.body.category,

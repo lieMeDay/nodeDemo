@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
     req.cookies = new Cookies(req, res)
     // 解析登录用户信息
     req.userInfo = {}
+    // next()
     if (req.cookies.get('userInfo')) {
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'))
@@ -66,6 +67,6 @@ mongoose.connect('mongodb://localhost/nodeDemo', function (err) {
         console.log('数据库连接失败')
     } else {
         console.log('数据库连接成功')
-        app.listen(9898)
+        app.listen(9999)
     }
 });

@@ -1,0 +1,11 @@
+{% extends 'listWrap.html' %}
+{% block main %}
+{% for v in contents%}
+<article class="item">
+    <h2 class="itemTit">{{v.title}}</h2>
+    <!-- <p class="itemDate">
+        <span>{{v.addTime|date('Y-m-d')}}</span><span>·</span><span>{{v.category.name}}</span><span>·</span><span>{{v.user.userName}}</span>
+    </p> -->
+</article>
+{% endfor %}
+{%endblock%}
