@@ -3,7 +3,6 @@ function cav(t) {
     var context = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    console.log(canvas.width)
     function Circle() {
         this.x = Math.random() * canvas.width;
         this.y = canvas.height;
@@ -45,7 +44,6 @@ function cav(t) {
     myimg.src = "/public/image/index_bg.jpg";
     var timer = "";
     clearInterval(t)
-    console.log(t)
     t = setInterval(function () {
         context.drawImage(myimg, 0, 0,canvas.width,canvas.height);
         timer++;
@@ -66,7 +64,7 @@ function drawImage(){
     }
     let h=canvas.getBoundingClientRect().height
     var myimg = new Image();
-    myimg.src = "../image/index_bg.jpg";
+    myimg.src = "/public/image/index_bg.jpg";
     context.drawImage(myimg, 0, 0,w,h);
 }
 cav('')

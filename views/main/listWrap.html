@@ -7,7 +7,12 @@
     <title>列表</title>
     <link rel="stylesheet" href="/public/css/listWrap.css">
     <link rel="stylesheet" href="/public/css/watch.css">
+    <link rel="stylesheet" href="/public/css/qiandao_style.css">
+    {% block css%}
+    {% endblock %}
     <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+    {% block js1%}
+    {% endblock %}
 </head>
 
 <body>
@@ -26,8 +31,6 @@
         <div class="pageWrap">
             <div class="pageCon">
                 <div class="slid">
-                    <link rel="stylesheet" href="/public/css/qiandao_style.css">
-                    <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
                     <div class="qiandao-left">
                         <div class="qiandao-left-top clear">
                             <div class="current-date">2016年1月6日</div>
@@ -37,7 +40,6 @@
                             </ul>
                         </div>
                     </div>
-                    <script src="/public/js/qiandao_js.js"></script>
                 </div>
                 <div class="center">
                     {%block main%}{%endblock%}
@@ -104,6 +106,10 @@
         </div>
     </div>
 </body>
+{% block js2%}
+{% endblock %}
+<script src="/public/js/qiandao_js.js"></script>
 <script src="/public/js/watch.js"></script>
 <script src="/public/js/sgin&log.js"></script>
+
 </html>

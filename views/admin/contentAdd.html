@@ -93,10 +93,7 @@
                 // console.log(this.content)
             },
             subForm() {
-                console.log(this.category)
-                console.log(this.title)
-                console.log(this.description)
-                console.log(this.content)
+                this.content= this.content.replace(/<pre/gi, '<pre class="hljs" ')
                 // return false;
                 let obj={
                     category:this.category,

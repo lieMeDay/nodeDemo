@@ -307,7 +307,7 @@ router.get('/content/edit', function (req, res, next) {
             res.render('admin/contentEdit', {
                 userInfo: req.userInfo,
                 categories:categories,
-                content: content
+                hqcontent: content
             })
         }
     })

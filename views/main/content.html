@@ -1,11 +1,21 @@
 {% extends 'listWrap.html' %}
+{% block css%}
+<link rel="stylesheet" href="/public/css/monokai-sublime.css">
+{% endblock %}
+{% block js1%}
+<script src="/public/js/highlight.pack.js"></script>
+{% endblock %}
 {% block main %}
-{% for v in contents%}
-<article class="item">
-    <h2 class="itemTit">{{v.title}}</h2>
-    <!-- <p class="itemDate">
-        <span>{{v.addTime|date('Y-m-d')}}</span><span>·</span><span>{{v.category.name}}</span><span>·</span><span>{{v.user.userName}}</span>
-    </p> -->
+<article class="itemCon">
+    <h2 class="conTit">{{content.title}}</h2>
+    <p class="conDate">
+        <span>{{content.addTime|date('Y-m-d')}}</span><span>·</span><span>{{content.category.name}}</span><span>·</span><span>{{content.user.userName}}</span>
+    </p>
+    <div class="con">{{content.content|raw}}</div>
 </article>
-{% endfor %}
+{% block js2%}
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+{% endblock %}
 {%endblock%}

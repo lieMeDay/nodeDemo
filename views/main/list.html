@@ -1,7 +1,7 @@
 {% extends 'listWrap.html' %}
 {% block main %}
 {% for v in contents%}
-<article class="item" onclick="window.location.href='/content'">
+<article class="item" onclick="window.location.href='/content?id={{v.id}}'">
     <h2 class="itemTit">{{v.title}}</h2>
     <p class="itemTips">{{v.desc}}</p>
     <p class="itemDate">
